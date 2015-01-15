@@ -1,0 +1,19 @@
+html {
+   background-color: #d3d3d3;
+}
+
+body {
+   text-align: center;
+   padding: 25px 0px 0px 0px;
+}
+
+#clockSpace {
+   color: yellow;
+   font-weight: bold;
+   text-align: center;
+} 
+
+.h1Text {
+   color: green;
+   text-align: center;
+}
