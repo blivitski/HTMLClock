@@ -3,11 +3,15 @@
    <head>
       <link href="css/clock.css" rel="stylesheet" type="text/css">
       <title>Lab 2 Clock</title>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js">
    </head>
    <body onload="getTime()">
       <h1 class="h1Text">The current time at Cal Poly is: <br></h1>
       <p id="clockSpace"></p>
-         <br>No Alarms Set
+         <br>No Alarms Set<br>
+      <div id="forecastLabel" onload="getTemp()">
+         <img id="forecastIcon">
+      </div>
       <script src="js/clock.js" type="text/javascript"></script>
    </body>
 </html>
