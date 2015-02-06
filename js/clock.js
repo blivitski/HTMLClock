@@ -94,13 +94,13 @@ function deleteAlarm() {
           for (var i = 0; i < results.length; i++) { 
              results[i].destroy({
                 success: function(obj) {
-                   alarm.parentNode.remove();
                 },
                 error: function (obj, error) {}
              });
           }
         }
     });
+   alarm.parentNode.remove();
 }
 
 function getAllAlarms() {
