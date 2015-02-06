@@ -84,7 +84,8 @@ function addAlarm() {
 
 function deleteAlarm() {
    console.log("deleting alarm...");
-   var alarmName = event.target.parentNode.childNodes[0].innerHTML;
+   var alarm = event.target;
+   var alarmName = alarm.parentNode.childNodes[0].innerHTML;
    var AlarmObject = Parse.Object.extend("Alarm");
    var query = new Parse.Query(AlarmObject);
    query.equalTo("alarmName", alarmName);
@@ -93,7 +94,7 @@ function deleteAlarm() {
           for (var i = 0; i < results.length; i++) { 
              results[i].destroy({
                 success: function(obj) {
-                   event.target.parentNode.remove();
+                   alarm.parentNode.remove();
                 },
                 error: function (obj, error) {}
              });
