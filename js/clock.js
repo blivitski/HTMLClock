@@ -94,7 +94,7 @@ function deleteAlarm() {
                 success: function(obj) {
                    event.target.parentNode.remove();
                 },
-                error:
+                error: function (obj, error) {}
              });
           }
         }
