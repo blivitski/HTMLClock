@@ -83,6 +83,7 @@ function addAlarm() {
 }
 
 function deleteAlarm() {
+   console.log("deleting alarm...");
    var alarmName = event.target.parentNode.childNodes[0].innerHTML;
    var AlarmObject = Parse.Object.extend("Alarm");
    var query = new Parse.Query(AlarmObject);
