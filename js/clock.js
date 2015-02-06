@@ -84,7 +84,7 @@ function addAlarm() {
 
 function deleteAlarm() {
    var deleteDiv = event.target;
-   var alarmName = alarm.parentNode.parentNode.childNodes[0].innerHTML;
+   var alarmName = deleteDiv.parentNode.parentNode.childNodes[0].innerHTML;
    var AlarmObject = Parse.Object.extend("Alarm");
    var query = new Parse.Query(AlarmObject);
    query.equalTo("alarmName", alarmName);
