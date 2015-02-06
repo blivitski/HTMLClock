@@ -103,7 +103,7 @@ function deleteAlarm() {
         }
       }
     });
-   alarm.parentNode.remove();
+   alarm.parentNode.parentNode.remove();
 }
 
 function getAllAlarms() {
