@@ -60,7 +60,7 @@ function insertAlarm(time, alarmName) {
    blankDiv.append(innerDiv2);
    var deleteDiv = $("<div>");
    deleteDiv.addClass("deleteDiv");
-   deleteDiv.append("<br><input type='button' value='Delete Alarm' onclick='deleteAlarm()'>");
+   deleteDiv.append("<br><input type='button' value='Remove' onclick='deleteAlarm()'>");
    blankDiv.append(deleteDiv);
    $("#alarms").append(blankDiv);
 }
@@ -80,10 +80,25 @@ function addAlarm() {
          hideAlarmPopup();
       }
     });
-
 }
 
 function deleteAlarm() {
+   var alarmName = event.target.parentNode.childNodes[0].innerHTML;
+   var AlarmObject = Parse.Object.extend("Alarm");
+   var query = new Parse.Query(AlarmObject);
+   query.equalTo("alarmName", alarmName);
+   query.find({
+        success: function(results) {
+          for (var i = 0; i < results.length; i++) { 
+             results[i].destroy({
+                success: function(obj) {
+                   event.target.parentNode.remove();
+                },
+                error:
+             });
+          }
+        }
+    });
 }
 
 function getAllAlarms() {
