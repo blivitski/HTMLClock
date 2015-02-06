@@ -60,7 +60,7 @@ function insertAlarm(time, alarmName) {
    blankDiv.append(innerDiv2);
    var deleteDiv = $("<div>");
    deleteDiv.addClass("deleteDiv");
-   deleteDiv.append("<input type='button' value='Delete Alarm' onclick='deleteAlarm()'>");
+   deleteDiv.append("<br><input type='button' value='Delete Alarm' onclick='deleteAlarm()'>");
    blankDiv.append(deleteDiv);
    $("#alarms").append(blankDiv);
 }
