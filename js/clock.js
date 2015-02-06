@@ -47,7 +47,7 @@ function hideAlarmPopup() {
    $("#popup").addClass("hide");
 }
 
-function insertAlarm(hours, mins, ampm, alarmName) {
+function insertAlarm(time, alarmName) {
    var blankDiv = $("<div>");
    blankDiv.addClass("flexable");
    var innerDiv1 = $("<div>");
@@ -55,7 +55,7 @@ function insertAlarm(hours, mins, ampm, alarmName) {
    innerDiv1.html(alarmName + "-");
    var innerDiv2 = $("<div>");
    innerDiv2.addClass("time");
-   innerDiv2.html(hours + ":" + mins + ampm);
+   innerDiv2.html(time);
    blankDiv.append(innerDiv1);
    blankDiv.append(innerDiv2);
    $("#alarms").append(blankDiv);
@@ -72,7 +72,7 @@ function addAlarm() {
    var alarmObject = new AlarmObject();
       alarmObject.save({"time": time,"alarmName": alarmName}, {
       success: function(object) {
-         insertAlarm(hours, mins, ampm, alarmName);
+         insertAlarm(time, alarmName);
          hideAlarmPopup();
       }
     });
