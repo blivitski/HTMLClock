@@ -86,20 +86,22 @@ function deleteAlarm() {
    console.log("deleting alarm...");
    var alarm = event.target;
    var alarmName = alarm.parentNode.childNodes[0].innerHTML;
+   console.log("childNodes0: " + childNodes[0] + "alarmName:" + alarmName);
    var AlarmObject = Parse.Object.extend("Alarm");
    var query = new Parse.Query(AlarmObject);
    query.equalTo("alarmName", alarmName);
    query.find({
-        success: function(results) {
-          for (var i = 0; i < results.length; i++) { 
-             results[i].destroy({
-                success: function(obj) {
-                   console.log("success");
-                },
-                error: function (obj, error) {console.log("failure");}
-             });
-          }
+      success: function(results) {
+         for (var i = 0; i < results.length; i++) { 
+            results[i].destroy({
+               success: function(obj) {
+                  console.log("success");
+               },
+               error: function (obj, error) {
+                  console.log("failure");}
+           });
         }
+      }
     });
    alarm.parentNode.remove();
 }
