@@ -52,10 +52,10 @@ function insertAlarm(time, alarmName) {
    blankDiv.addClass("flexable");
    var innerDiv1 = $("<div>");
    innerDiv1.addClass("name");
-   innerDiv1.html(alarmName + "-");
+   innerDiv1.html(alarmName);
    var innerDiv2 = $("<div>");
    innerDiv2.addClass("time");
-   innerDiv2.html(time);
+   innerDiv2.html("-" + time);
    blankDiv.append(innerDiv1);
    blankDiv.append(innerDiv2);
    var deleteDiv = $("<div>");
