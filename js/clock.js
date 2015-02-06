@@ -83,10 +83,8 @@ function addAlarm() {
 }
 
 function deleteAlarm() {
-   console.log("deleting alarm...");
-   var alarm = event.target;
+   var deleteDiv = event.target;
    var alarmName = alarm.parentNode.parentNode.childNodes[0].innerHTML;
-   console.log("alarmName:" + alarmName);
    var AlarmObject = Parse.Object.extend("Alarm");
    var query = new Parse.Query(AlarmObject);
    query.equalTo("alarmName", alarmName);
@@ -95,15 +93,15 @@ function deleteAlarm() {
          for (var i = 0; i < results.length; i++) { 
             results[i].destroy({
                success: function(obj) {
-                  console.log("success");
+                  console.log("successfully deleted");
                },
                error: function (obj, error) {
-                  console.log("failure");}
+                  console.log("failed to delete");}
            });
         }
       }
     });
-   alarm.parentNode.parentNode.remove();
+   deleteDiv.parentNode.parentNode.remove();
 }
 
 function getAllAlarms() {
