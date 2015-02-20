@@ -3,6 +3,11 @@ $(function(){
    getAllAlarms();
 });
 
+function signOut() {
+   gapi.auth.signOut();
+   location.reload();
+}
+
 function signinCallback(authResult) {
   if (authResult['status']['signed_in']) {
     // Update the app to reflect a signed in user
@@ -14,6 +19,8 @@ function signinCallback(authResult) {
        });
        request.execute(function(resp) {
        console.log('Retrieved profile for:' + resp.displayName);
+         $("#GoogleLogin").html(resp.displayName);
+         $("#GoogleLogin").attr("onclick", signOut());
        });
     });
   } else {
