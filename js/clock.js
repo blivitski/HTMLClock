@@ -19,7 +19,7 @@ function signinCallback(authResult) {
        });
        request.execute(function(resp) {
        console.log('Retrieved profile for:' + resp.displayName);
-         $("#GoogleLogin").html(resp.displayName);
+         $("#GoogleLogin").html("Welcome " + resp.displayName);
          $("#GoogleLogin").attr("onclick", "signOut()");
        });
     });
