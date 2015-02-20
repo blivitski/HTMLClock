@@ -6,12 +6,15 @@
       <title>Brandon's Clock</title>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
       <script src="//www.parsecdn.com/js/parse-1.3.4.min.js"></script>
+      <script src="https://apis.google.com/js/client:platform.js" async defer></script>
    </head>
    <body onload="getTime()">
       <h1 class="h1Text">The current time at Cal Poly is: <br></h1>
       <p id="clockSpace"></p><br><br>
       <img id="forecastIcon">
       <div id="forecastLabel">
+      </div>
+      <div id="GoogleLogin">
       </div>
       <div id="alarmContainer">
          <div id="alarmHeader" class="flexable">
