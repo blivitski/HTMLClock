@@ -1,6 +1,5 @@
 $(function(){
    getTemp();
-   getAllAlarms();
 });
 
 function signOut() {
@@ -10,8 +9,6 @@ function signOut() {
 
 function signinCallback(authResult) {
   if (authResult['status']['signed_in']) {
-    // Update the app to reflect a signed in user
-    // Hide the sign-in button now that the user is authorized, for example:
     document.getElementById('signinButton').setAttribute('style', 'display: none');
     gapi.client.load('plus','v1', function(){
        var request = gapi.client.plus.people.get({
@@ -21,14 +18,10 @@ function signinCallback(authResult) {
        console.log('Retrieved profile for:' + resp.displayName);
          $("#GoogleLogin").html("Welcome " + resp.displayName);
          $("#GoogleLogin").attr("onclick", "signOut()");
+         getAllAlarms(resp.displayName);
        });
     });
   } else {
-    // Update the app to reflect a signed out user
-    // Possible error values:
-    //   "user_signed_out" - User is signed-out
-    //   "access_denied" - User denied access to your app
-    //   "immediate_failed" - Could not automatically log in the user
     console.log('Sign-in state: ' + authResult['error']);
   }
 }
@@ -101,10 +94,11 @@ function addAlarm() {
    var ampm = $("#ampm option:selected").text();
    var alarmName = $("#alarmName").val();
    var time = hours + ":" + mins + ampm;
+   var displayName = $("#GoogleLogin").text().substring(8);
 
    var AlarmObject = Parse.Object.extend("Alarm");
    var alarmObject = new AlarmObject();
-      alarmObject.save({"time": time,"alarmName": alarmName}, {
+      alarmObject.save({"displayName": displayName, "time": time,"alarmName": alarmName}, {
       success: function(object) {
          insertAlarm(time, alarmName);
          hideAlarmPopup();
@@ -134,10 +128,11 @@ function deleteAlarm() {
    deleteDiv.parentNode.parentNode.remove();
 }
 
-function getAllAlarms() {
+function getAllAlarms(userid) {
    Parse.initialize("nFOUCJdMifnmc5r8hxJr4UKYcutangiVPINUxAk4", "TCBba331COXPKLcyBHjfknxnlIOVphJHYpyMVz1G");
     var AlarmObject = Parse.Object.extend("Alarm");
     var query = new Parse.Query(AlarmObject);
+    query.equalTo("displayName", userid);
     query.find({
         success: function(results) {
           for (var i = 0; i < results.length; i++) { 
