@@ -86,6 +86,7 @@ function insertAlarm(time, alarmName) {
    deleteDiv.append("<input type='button' value='Remove' align='right' onclick='deleteAlarm()'>");
    blankDiv.append(deleteDiv);
    $("#alarms").append(blankDiv);
+   ga('send', 'event', 'Alarm', 'Add');
 }
 
 function addAlarm() {
@@ -126,6 +127,7 @@ function deleteAlarm() {
       }
     });
    deleteDiv.parentNode.parentNode.remove();
+   ga('send', 'event', 'Alarm', 'Delete');
 }
 
 function getAllAlarms(userid) {
